@@ -116,14 +116,14 @@
     "href": "index.html",
     "title": "Building and publishing with Quarto",
     "section": "",
-    "text": "I’ve found the best approach to setting up Quarto is download and run the installer from quarto.org."
+    "text": "I’ve found the best approach to setting up Quarto is download and run the installer from quarto.org.\nIf you don’t have a picture-perfect Python and R setup, you can install miniconda."
   },
   {
     "objectID": "index.html#installing-quarto",
     "href": "index.html#installing-quarto",
     "title": "Building and publishing with Quarto",
     "section": "",
-    "text": "I’ve found the best approach to setting up Quarto is download and run the installer from quarto.org."
+    "text": "I’ve found the best approach to setting up Quarto is download and run the installer from quarto.org.\nIf you don’t have a picture-perfect Python and R setup, you can install miniconda."
   },
   {
     "objectID": "index.html#quickstart",
@@ -133,11 +133,11 @@
     "text": "Quickstart\nIf you’d rather just blast off instead of actually learn anything, here you go!\n\nSingle-page site\nCreate a Jupyter notebook called my-notebook.ipynb and run either of the commands below.\n# Preview the site\nquarto preview my-notebook.ipynb\n\n# Render the actual HTML page\nquarto publish my-notebook.ipynb --to html --embed-resources\n\n\nMulti-page website\nCreate a _quarto.yml as outlined here, then run either of the commands below.\n# Preview the site\nquarto preview\n\n# Render out as files\nquarto render"
   },
   {
-    "objectID": "index.html#todo",
-    "href": "index.html#todo",
+    "objectID": "index.html#questions",
+    "href": "index.html#questions",
     "title": "Building and publishing with Quarto",
-    "section": "TODO",
-    "text": "TODO\n\nExample quarto files"
+    "section": "Questions",
+    "text": "Questions\nHonestly the Quarto docs are great"
   },
   {
     "objectID": "websites/publishing.html",
