@@ -1,0 +1,7 @@
+---
+title: "Prepare for the tutorial"
+---
+
+Install and open Visual Studio Code
+
+Download these files

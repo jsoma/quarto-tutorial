@@ -1,0 +1,65 @@
+---
+title: "Navigation"
+---
+
+Most of this is just abbreviated content from the [website navigation](https://quarto.org/docs/websites/website-navigation.html) portion of the Quarto site.
+
+## Top navigation
+
+Adapt the following to your `_quarto.yml` to add top navigation to your website. You can any supported file format as a page, including `qmd` and `ipynb`.
+
+```{.yaml filename="_quarto.yml"}
+---
+website:
+  navbar:
+    background: primary
+    search: true
+    left:
+      - text: "Home"
+        file: index.qmd
+      - talks.ipynb
+      - about.qmd 
+---
+```
+
+[More top navigation details](https://quarto.org/docs/websites/website-navigation.html#top-navigation) on the Quarto site.
+
+## Left-side navigation
+
+Adapt the following to your `_quarto.yml` to add navigation to the left-hand side of your website. You can any supported file format as a page, including `qmd` and `ipynb`.
+
+```{.yaml filename="_quarto.yml"}
+---
+website:
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - section: "Basics"
+        contents:
+          - index.qmd
+          - basics-knitr.qmd
+          - basics-jupyter.qmd
+      - section: "Layout"
+        contents:
+          - layout.qmd
+          - layout-knitr.qmd
+          - layout-jupyter.qmd
+---
+```
+
+[More top navigation details](https://quarto.org/docs/websites/website-navigation.html#side-navigation) on the Quarto site.
+
+## Table of contents
+
+Add the following to the YAML block at the top of your Quarto Markdown or Jupyter notebook file.
+
+```yaml
+---
+format:
+  html:
+    toc: true
+---
+```
+
+[More table of contents details](https://quarto.org/docs/output-formats/html-basics.html#table-of-contents) on the Quarto site.

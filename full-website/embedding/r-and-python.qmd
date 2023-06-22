@@ -1,0 +1,57 @@
+---
+title: Using R and Python in Quarto
+---
+
+There are two ways of using Quarto:
+
+The first is that it's just a tool to just convert Jupyter notebooks into websites. The websites are great, it's a delight, etc etc.
+
+The *other* way of using Quarto is to move beyond Jupyter notebooks into a new format called Quarto Markdown files, or `.qmd`. Quarto Markdown is a plaintext-only alternative to Jupyter, and built off of R Markdown (which I don't really know but hey, it's what R people use!).
+
+## What Quarto markdown looks like
+
+To use a language like Python or R, you wrap you code in triple backticks and add either `{python}` or `{r}` to it.
+
+```` markdown
+This is some Python code.
+
+```{{python}}
+import pandas as pd
+
+df = pd.read_csv("temperatures.csv")
+df.head()
+```
+
+Here is some R code.
+
+```{{r}}
+data <- read.csv("temperatures.csv")
+print(data)
+```
+````
+
+Traditional Markdown just runs the code as styled code blocks, but Quarto Markdown *actually runs the code*, similar to a Jupyter notebook.
+
+## Quarto markdown in action
+
+This is a live example of using the pandas libary to read in a CSV file, then display the first few lines of the file. You'll see both the code as well as the output.
+
+```{python}
+import pandas as pd
+
+df = pd.read_csv("temperatures.csv")
+df.head(3)
+```
+
+To make this happen, all I had to do was add this Markdown:
+
+```` markdown
+```{{python}}
+import pandas as pd
+
+df = pd.read_csv("temperatures.csv")
+df.head(3)
+```
+````
+
+Amazing!

@@ -1,0 +1,38 @@
+---
+title: A multi-page website
+---
+
+## Multi-page website
+
+To build a multi-page website, first create a folder full of content – qmd files, Jupyter notebooks, etc etc. Then add a file called `_quarto.yml` that looks like the below.
+
+```{.yaml filename="_quarto.yml"}
+project:
+  type: website
+
+website:
+  title: "My Website"
+  sidebar:
+    style: "docked"
+    contents:
+      - href: index.qmd
+        text: Home
+      - section: "Websites"
+        contents:
+          - text: "Basics"
+            url: websites/index.qmd
+          - text: "Navigation"
+            url: websites/navigation.qmd
+          - text: "Styling"
+            url: websites/styling.qmd
+      - section: "Embedding"
+        contents:
+          - text: "R and Python"
+            url: embedding/r-and-python.qmd
+          - text: "Interactive graphics with Observable"
+            url: embedding/observable.qmd
+```
+
+Customize individual page using [single-page options](single-page.qmd#customizing-the-output), or add them to your `_quarto.yml` to make styles apply to all rendered pages.
+
+To build the website, simply run the `quarto render` command in the same folder.

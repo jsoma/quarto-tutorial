@@ -1,0 +1,78 @@
+---
+title: "Using Observable in Quarto"
+toc: true
+---
+
+Let's look at how to embed [Observable](https://observablehq.com/) for easy interactive data visualization.
+
+## What is Observable?
+
+Observable is blah blah.
+
+## Embedding Observable
+
+Observable is embedded with the `ojs` tag, so your `.qmd` file might look something like this:
+
+```` markdown
+We are reading in a file.
+
+```{{ojs}}
+temps = FileAttachment("temperatures.csv").csv({typed: true})
+```
+
+And here is our plot.
+
+```{{ojs}}
+Plot.lineY(temps, {x: "Date", y: "Anomaly"})
+```
+````
+
+This could result in a chart like below:
+
+```{ojs}
+//| echo: false
+temperatures = FileAttachment("temperatures.csv").csv({typed: true})
+Plot.line(temperatures, {x: "Date", y: "Anomaly"}).plot({y: {grid: true}})
+```
+
+## Creating interactive plots
+
+::: {.callout-note}
+This is an adaptation of the [moving average example](https://observablehq.com/@observablehq/plot-line-with-moving-average?intent=fork) from the Observable documentation.
+:::
+
+We'll start by reading in our file. The file itself lives in the same folder as our `.qmd` file.
+
+```{ojs}
+temps = FileAttachment("temperatures.csv").csv({typed: true})
+```
+
+The beauty of Observable is that it's easy to create graphics that the user can interact with by setting options, filtering, and more! In this case we'll use `Inputs.select` to set the rolling average window for a time series plot.
+
+```{ojs}
+viewof rolling = Inputs.select([6, 12, 24, 36, 60, 120], {
+    value: 12,
+    format: o => `${o} months`,
+    label: "Rolling window"
+})
+```
+
+Now that we've read in our data and set up a filter, it's time to sit back, relax, and enjoy the plot!
+
+```{ojs}
+//| code-fold: true
+Plot.plot({
+  color: {scheme: "BuRd"},
+  marks: [
+    Plot.ruleY([0]),
+    Plot.dot(temps, {x: "Date", y: "Anomaly", stroke: "Anomaly"}),
+    Plot.lineY(temps, Plot.windowY(rolling, {x: "Date", y: "Anomaly"}))
+  ]
+})
+```
+
+When you're working with Observable inside of a Quarto notebook, you have all the same sorts of options you would when working with Python or R. In this case, we used `//| code-fold: true` with our `{ojs}` block to allow the user to hdie and show the code. Click `▶ Code` to reveal the code we used to embed the graph!
+
+## Learn more
+
+Quarto's [documentation on using Observable](https://quarto.org/docs/interactive/ojs/) is excellent, I definitely recommend checking it out. In the example above we specifically used Observable Plot, which you can [learn more about on observablehq.com](https://observablehq.com/plot/getting-started).

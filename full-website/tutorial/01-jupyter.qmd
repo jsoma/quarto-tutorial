@@ -1,0 +1,7 @@
+---
+title: "Step One: Jupyter"
+---
+
+Open the Jupyter notebook
+
+Open the terminal

@@ -1,0 +1,39 @@
+---
+title: "Styling"
+---
+
+## HTML themes
+
+Find the other options [on the Quarto themes page](https://quarto.org/docs/output-formats/html-themes.html).
+
+```yaml
+---
+format:
+  html:
+    theme: cosmo   # cosmo bootswatch theme
+---
+```
+
+## Link colors
+
+```yaml
+---
+format:
+  html:
+    linkcolor: red
+---
+```
+
+## Custom CSS
+
+```yaml
+---
+format:
+  html:
+    css: styles.css
+---
+```
+
+## Sidebar/column sizing
+
+There are a lot of options for [reformatting the page](https://quarto.org/docs/output-formats/page-layout.html), especially noteable is the [grid customization](https://quarto.org/docs/output-formats/page-layout.html#grid-customization).

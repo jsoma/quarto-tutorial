@@ -1,0 +1,28 @@
+---
+title: "Combining Python and R"
+engine: knitr
+---
+
+We'll use R's `reticulate` library to connect the two languages.
+
+```{r setup}
+library(reticulate)
+```
+
+Import the data using `pandas`...
+
+```{python}
+import pandas as pd
+
+df = pd.read_csv("temperatures.csv", parse_dates=['Date'])
+df.head()
+```
+
+...and graph it using `ggplot`.
+
+```{r}
+library(ggplot2)
+
+ggplot(py$df,aes(Date, Anomaly, group=1)) +
+    geom_line()
+```

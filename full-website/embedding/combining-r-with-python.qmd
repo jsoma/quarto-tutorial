@@ -1,0 +1,43 @@
+---
+title: "Combining Python and R"
+engine: knitr
+---
+
+If you'd like to have Python and R actually interact, you'll need to make a couple changes.
+
+## Setup
+
+First, you'll add `engine: knitr` to your yaml config section.
+
+```yaml
+---
+title: "Combining Python and R"
+engine: knitr
+---
+```
+
+Second, we'll use R's `reticulate` library to connect the two languages.
+
+```{r setup}
+library(reticulate)
+```
+
+## Usage
+
+Import the data using `pandas`...
+
+```{python}
+import pandas as pd
+
+df = pd.read_csv("temperatures.csv", parse_dates=['Date'])
+df.head()
+```
+
+...and graph it using `ggplot`.
+
+```{r}
+library(ggplot2)
+
+ggplot(py$df,aes(Date, Anomaly, group=1)) +
+    geom_line()
+```

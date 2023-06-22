@@ -1,0 +1,39 @@
+project:
+  type: website
+  output-dir: docs
+
+format:
+  html:
+    toc: true
+    linkcolor: red
+    theme: cosmo
+
+website:
+  title: "Example Quarto website"
+  sidebar:
+    style: "docked"
+    contents:
+      - href: index.qmd
+        text: Home
+      - section: "Examples"
+        contents:
+          - text: "Jupyter notebook (Python)"
+            url: notebook.ipynb
+          - text: "Quarto Markdown"
+            url: quarto-markdown.qmd
+          - text: "Observable JS"
+            url: observable.qmd
+          - text: "Python + R"
+            url: python-and-r.qmd
+  page-footer: 
+    border: false
+    background: dark
+    left: >
+      ©2023, Jonathan Soma
+    right: 
+      - icon: github
+        href: https://github.com/jsoma
+      - icon: twitter 
+        href: https://twitter.com/dangerscarf
+      - icon: envelope
+        href: mailto:jonathan.soma@gmail.com

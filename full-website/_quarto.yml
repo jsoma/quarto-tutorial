@@ -1,0 +1,53 @@
+project:
+  type: website
+  output-dir: docs
+
+format:
+  html:
+    toc: true
+    linkcolor: red
+    theme: cosmo
+
+website:
+  page-navigation: true
+  title: "How to publish with Quarto"
+  sidebar:
+    style: "docked"
+    contents:
+      - href: index.qmd
+        text: Home
+      - section: "Websites"
+        contents:
+          - text: "Single-page"
+            url: websites/single-page.qmd
+          - text: "Multi-page"
+            url: websites/multi-page.qmd
+          - text: "Navigation"
+            url: websites/navigation.qmd
+          - text: "Styling"
+            url: websites/styling.qmd
+      - section: "Using code"
+        contents:
+          - text: "R and Python"
+            url: embedding/r-and-python.qmd
+          - text: "Combining R and Python"
+            url: embedding/r-and-python.qmd
+          - text: "Interactive graphics with Observable"
+            url: embedding/observable.qmd
+          - text: "Troubleshooting"
+            url: embedding/troubleshooting.qmd
+  page-footer: 
+    border: false
+    background: dark
+    left: >
+      Find me at [jonathan.soma@gmail.com](mailto:jonathan.soma@gmail.com)
+      or [@dangerscarf](https://twitter.com/dangerscarf)
+    center: >
+      ©2023, Jonathan Soma
+    right: 
+      - icon: github
+        href: https://github.com/jsoma
+      - icon: twitter 
+        href: https://twitter.com/dangerscarf
+      - icon: envelope
+        href: mailto:jonathan.soma@gmail.com

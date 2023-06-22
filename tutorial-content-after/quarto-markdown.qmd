@@ -1,0 +1,42 @@
+---
+title: "This is a Quarto markdown file"
+format:
+    html:
+        toc: true
+---
+
+When was this run?
+
+```{python}
+from datetime import datetime
+
+updated_at = datetime.now().strftime("%X %x")
+print("This was run at", updated_at)
+```
+
+## Analysis
+
+### Reading in our data
+
+Let's analyze temperature data from [NASA Goddard](https://observablehq.com/@ge045/global-temperature-trends).
+
+```{python}
+import pandas as pd
+
+df = pd.read_csv("temperatures.csv", parse_dates=['Date'])
+df.head()
+```
+
+### Looking at the most recent data
+
+```{python}
+df.tail(10)
+```
+
+## Visualization
+
+We're going to use `resample` to take the mean change over every 10-year period.
+
+```{python}
+df.resample('10A', on='Date').Anomaly.mean().plot()
+```

@@ -1,0 +1,41 @@
+---
+title: A single-page website
+---
+
+## A simple approach
+
+The simplest approach involves having an existing Jupyter notebook and running the command below. You do not have to make any changes to the original HTML, and it will create a standalone HTML file with all images, CSS, etc embedded inside.
+
+```bash
+quarto render my-notebook.ipynb --to html --embed-resources
+```
+
+## Customizing the output
+
+A more robust approach requires adding a YAML block at the top of your notebook. This block provide options for your output HTML, and allows many degrees of customization. This approach also helps avoid using complicated `render` options.
+
+First, add a new cell at the top of your notebook. Make it **Raw** as opposed to Markdown, Python, or R.
+
+Second, add a YAML block surrounded by `---` that contains any [HTML options](https://quarto.org/docs/output-formats/html-basics.html) you'd like to add. An example is below.
+
+```yaml
+---
+title: "This title goes at the top of the page"
+format:
+  html:
+    toc: true
+    embed-resources: true
+    linkcolor: red
+    theme: cosmo
+---
+```
+
+When added to your notebook, it should look something like the image below.
+
+![An example of a raw NBConvert block](raw.png)
+
+Finally, run the the `quarto render` command.
+
+```bash
+quarto render my-notebook.ipynb --to html
+```

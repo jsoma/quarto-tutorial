@@ -1,0 +1,49 @@
+---
+title: "This will be Observable JS content"
+---
+
+Temperature data comes from [NASA Goddard](https://observablehq.com/@ge045/global-temperature-trends).
+
+```{ojs}
+temps = FileAttachment("temperatures.csv").csv({typed: true})
+temps
+```
+
+## A simple plot
+
+And here is our plot.
+
+```{ojs}
+//| code-fold: true
+Plot.plot({
+  color: {scheme: "BuRd"},
+  marks: [
+    Plot.ruleY([0]),
+    Plot.dot(temps, {x: "Date", y: "Anomaly", stroke: "Anomaly"}),
+  ]
+})
+```
+
+## A fancier plot
+
+We'll use a rolling input window to show off the power of Observable Plot.
+
+```{ojs}
+viewof rolling = Inputs.select([6, 12, 24, 36, 60, 120], {
+    value: 12,
+    format: o => `${o} months`,
+    label: "Rolling window"
+})
+```
+
+```{ojs}
+//| code-fold: true
+Plot.plot({
+  color: {scheme: "BuRd"},
+  marks: [
+    Plot.ruleY([0]),
+    Plot.dot(temps, {x: "Date", y: "Anomaly", stroke: "Anomaly"}),
+    Plot.lineY(temps, Plot.windowY(rolling, {x: "Date", y: "Anomaly"}))
+  ]
+})
+```

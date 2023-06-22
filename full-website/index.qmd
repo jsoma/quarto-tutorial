@@ -1,0 +1,42 @@
+---
+title: Building and publishing with Quarto
+subtitle: A nice little walkthrough of the hard-to-ignore pieces
+---
+
+## Installing Quarto
+
+I've found the best approach to setting up Quarto is [download and run the installer from quarto.org](https://quarto.org/docs/get-started/).
+
+If you don't have a picture-perfect Python and R setup, you can [install miniconda](https://docs.conda.io/en/latest/miniconda.html).
+
+## Quickstart
+
+If you'd rather just blast off instead of actually learn anything, here you go!
+
+### Single-page site
+
+Create a Jupyter notebook called `my-notebook.ipynb` and run either of the commands below.
+
+```bash
+# Preview the site
+quarto preview my-notebook.ipynb
+
+# Render the actual HTML page
+quarto publish my-notebook.ipynb --to html --embed-resources
+```
+
+### Multi-page website
+
+Create a `_quarto.yml` as [outlined here](websites/multi-page.qmd), then run either of the commands below.
+
+```bash
+# Preview the site
+quarto preview
+
+# Render out as files
+quarto render
+```
+
+## Questions
+
+Honestly the [Quarto docs are great](https://quarto.org/docs/guide/)

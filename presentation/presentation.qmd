@@ -1,0 +1,144 @@
+---
+format:
+  revealjs: 
+    theme: simple
+    smaller: true
+---
+
+# Quarto!
+
+## Publishing your notebooks with the Quarto framework
+
+Jonathan Soma and Leon Yin
+
+The Joint Computation + Journalism European Data & Computational Journalism Conference 2023
+
+## What is Quarto?
+
+"an open source scientific and technical publishing system"
+
+![](images/quarto_org.png)
+
+## Publishing framework (pandoc)
+
+:::: {.columns}
+
+::: {.column width="50%"}
+Everything flows to [pandoc](https://pandoc.org/)!
+
+![](images/pandoc.png)
+
+(This is the official website's representation of pandoc)
+:::
+
+::: {.column width="50%"}
+```{mermaid}
+flowchart TD
+  qmd --> markdown
+  Jupyter --> markdown
+  markdown --> quarto([quarto])
+  css --> quarto
+  settings --> quarto
+  quarto --> pandoc([pandoc])
+  pandoc --> PDF & Word & Presentation & HTML & LaTeX & etc
+```
+:::
+
+::::
+
+## What this means for notebooks
+
+
+## Development framework (qmd)
+
+You can also use Quarto to run data analysis code instead of tools like Jupyter notebooks.
+
+```` markdown
+## A live qmd example
+
+This is some Python code, being run by Quarto.
+
+```{{python}}
+import pandas as pd
+
+df = pd.read_csv("temperatures.csv")
+df.head()
+```
+````
+
+Want to see what happens when I run it?
+
+## A live qmd example
+
+This is some Python code, being run by Quarto.
+
+```{python}
+import pandas as pd
+
+df = pd.read_csv("temperatures.csv")
+df.head()
+```
+
+## The documentation is good!!! (kind of)
+
+![](images/quarto-tutorials.png)
+
+# How we have used Quarto
+
+## inspectelement.org
+
+<iframe class="stretch" data-src="https://inspectelement.org/apis.html"></iframe>
+
+## inspectelement.org
+
+![](images/inspect-element-1.png){.absolute top=50 left=-200}
+
+![](images/inspect-element-2.png){.absolute top=100 left=250}
+
+## normalai.org
+
+<iframe class="stretch" data-src="https://normalai.org/images/instance-segmentation.html"></iframe>
+
+## normalai.org
+
+![](images/normalai-1.png){.absolute top=50 left=-200}
+
+![](images/normalai-2.png){.absolute top=100 left=250}
+
+## jonathansoma.com/everything
+
+<iframe class="stretch" data-src="https://jonathansoma.com/everything"></iframe>
+
+## jonathansoma.com/everything
+
+![](images/jonathansoma-2.png){.absolute top=80 left=-150}
+
+![](images/jonathansoma-1.png){.absolute top=100 left=200}
+
+## at the Associated Press
+
+I don't have any screenshots, but it's used for internal sharing of data analysis!
+
+## The workshop website + this presentation!
+
+![](images/this-presentation.png)
+
+## Hands-on: Host your own Quarto website
+
+_Let's do this!_
+
+:::: {.columns}
+
+::: {.column}
+Install Quarto from [quarto.org](https://quarto.org)
+
+![](images/do-quarto.png)
+:::
+
+::: {.column}
+Install (or open) Visual Studio Code from [code.visualstudio.com](https://code.visualstudio.com)
+
+![](images/do-vsc.png)
+:::
+
+::::

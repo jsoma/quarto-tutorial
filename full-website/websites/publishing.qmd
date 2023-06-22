@@ -1,0 +1,15 @@
+---
+title: Publishing
+---
+
+## Publishing to GitHub Pages
+
+While there are all sorts of automatic methods for producing websites using GitHub Pages, I prefer to the old-fashioned "let's just put it all into the `docs` folder and publish from there" approach.
+
+First, add the `output-dir` option into your `_quarto.yml`.
+
+```{.yaml filename="_quarto.yml"}
+project:
+  type: website
+  output-dir: docs
+```

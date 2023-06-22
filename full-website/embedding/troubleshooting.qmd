@@ -1,0 +1,40 @@
+---
+title: Troubleshooting
+---
+
+## Interpreter issues
+
+One thing that can be troublesome about Quarto is making sure Quarto and R are using the same Python or R installation. If they're mixed up, it might mean packages installed from the command line won't be found by Quarto.
+
+If you used `pip install` to add a library but still get a `ModuleNotFoundError` error when impoting it, this is probably why!
+
+### List your Jupyter installations
+
+List interpreters that **Quarto knows about**:
+
+```bash
+quarto check jupyter
+```
+
+List interpreters that your **command line knows about**:
+
+```bash
+jupyter kernelspec
+# or, for more details
+jupyter kernelspec --json
+```
+
+### Quarto options to pick Jupyter kernel
+
+Use `jupyter kernelspec` to find the specific kernel you'd like to use with Quarto. Once you have its abbreviated name, add it to your `_quarto.yml` or document's YAML to ensure it is found and used correctly.
+
+```yaml
+---
+title: "My Document"
+jupyter: xpython
+---
+```
+
+## Just use miniconda!
+
+As much as I hate Anaconda, I was having some Python/R issues and everything worked fine after [installing miniconda](https://docs.conda.io/en/latest/miniconda.html)! If you'd like to think about your problems less, maybe go that route.
