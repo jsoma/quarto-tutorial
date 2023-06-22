@@ -6,7 +6,7 @@
 
 ## Setup
 
-1. Download [tutorial-content.zip](tutorial-content.zip) and extract it on your machine.
+1. Download [tutorial-content.zip](https://github.com/jsoma/quarto-tutorial/raw/main/tutorial-content.zip) and extract it on your machine.
 2. Install Quarto from [quarto.org](https://quarto.org)
 3. Install Visual Studio Code from [code.visualstudio.com/](https://code.visualstudio.com/)
 

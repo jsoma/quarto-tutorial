@@ -3,8 +3,10 @@ Here is the rough vision of what the tutorial will look like. You can also find 
 ## Setup 
 
 - Install Quarto from [quarto.org](https://quarto.org)
-- Install Visual Studio Code from [code.visualstudio.com/](https://code.visualstudio.com/)
+- Install Visual Studio Code from [code.visualstudio.com](https://code.visualstudio.com/)
 - You can install Python if you want, R if you want. I was having some Python trouble and installed [miniconda](https://docs.conda.io/en/latest/miniconda.html) and life worked great after that.
+
+Finally, download [tutorial-content.zip](https://github.com/jsoma/quarto-tutorial/raw/main/tutorial-content.zip) and extract it on your machine.
 
 ## Rendering websites
 
