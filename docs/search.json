@@ -1,0 +1,254 @@
+[
+  {
+    "objectID": "tutorial/01-jupyter.html",
+    "href": "tutorial/01-jupyter.html",
+    "title": "Step One: Jupyter",
+    "section": "",
+    "text": "Open the Jupyter notebook\nOpen the terminal"
+  },
+  {
+    "objectID": "tutorial/setup.html",
+    "href": "tutorial/setup.html",
+    "title": "Prepare for the tutorial",
+    "section": "",
+    "text": "Install and open Visual Studio Code\nDownload these files"
+  },
+  {
+    "objectID": "embedding/combining-r-with-python.html",
+    "href": "embedding/combining-r-with-python.html",
+    "title": "Combining Python and R",
+    "section": "",
+    "text": "If you’d like to have Python and R actually interact, you’ll need to make a couple changes."
+  },
+  {
+    "objectID": "embedding/combining-r-with-python.html#setup",
+    "href": "embedding/combining-r-with-python.html#setup",
+    "title": "Combining Python and R",
+    "section": "Setup",
+    "text": "Setup\nFirst, you’ll add engine: knitr to your yaml config section.\n---\ntitle: \"Combining Python and R\"\nengine: knitr\n---\nSecond, we’ll use R’s reticulate library to connect the two languages.\n\nlibrary(reticulate)"
+  },
+  {
+    "objectID": "embedding/combining-r-with-python.html#usage",
+    "href": "embedding/combining-r-with-python.html#usage",
+    "title": "Combining Python and R",
+    "section": "Usage",
+    "text": "Usage\nImport the data using pandas…\n\nimport pandas as pd\n\ndf = pd.read_csv(\"temperatures.csv\", parse_dates=['Date'])\ndf.head()\n\n        Date  Anomaly\n0 1880-01-01    -0.30\n1 1880-02-01    -0.21\n2 1880-03-01    -0.18\n3 1880-04-01    -0.27\n4 1880-05-01    -0.14\n\n\n…and graph it using ggplot.\n\nlibrary(ggplot2)\n\nggplot(py$df,aes(Date, Anomaly, group=1)) +\n    geom_line()"
+  },
+  {
+    "objectID": "embedding/troubleshooting.html",
+    "href": "embedding/troubleshooting.html",
+    "title": "Troubleshooting",
+    "section": "",
+    "text": "One thing that can be troublesome about Quarto is making sure Quarto and R are using the same Python or R installation. If they’re mixed up, it might mean packages installed from the command line won’t be found by Quarto.\nIf you used pip install to add a library but still get a ModuleNotFoundError error when impoting it, this is probably why!\n\n\nList interpreters that Quarto knows about:\nquarto check jupyter\nList interpreters that your command line knows about:\njupyter kernelspec\n# or, for more details\njupyter kernelspec --json\n\n\n\nUse jupyter kernelspec to find the specific kernel you’d like to use with Quarto. Once you have its abbreviated name, add it to your _quarto.yml or document’s YAML to ensure it is found and used correctly.\n---\ntitle: \"My Document\"\njupyter: xpython\n---"
+  },
+  {
+    "objectID": "embedding/troubleshooting.html#interpreter-issues",
+    "href": "embedding/troubleshooting.html#interpreter-issues",
+    "title": "Troubleshooting",
+    "section": "",
+    "text": "One thing that can be troublesome about Quarto is making sure Quarto and R are using the same Python or R installation. If they’re mixed up, it might mean packages installed from the command line won’t be found by Quarto.\nIf you used pip install to add a library but still get a ModuleNotFoundError error when impoting it, this is probably why!\n\n\nList interpreters that Quarto knows about:\nquarto check jupyter\nList interpreters that your command line knows about:\njupyter kernelspec\n# or, for more details\njupyter kernelspec --json\n\n\n\nUse jupyter kernelspec to find the specific kernel you’d like to use with Quarto. Once you have its abbreviated name, add it to your _quarto.yml or document’s YAML to ensure it is found and used correctly.\n---\ntitle: \"My Document\"\njupyter: xpython\n---"
+  },
+  {
+    "objectID": "embedding/troubleshooting.html#just-use-miniconda",
+    "href": "embedding/troubleshooting.html#just-use-miniconda",
+    "title": "Troubleshooting",
+    "section": "Just use miniconda!",
+    "text": "Just use miniconda!\nAs much as I hate Anaconda, I was having some Python/R issues and everything worked fine after installing miniconda! If you’d like to think about your problems less, maybe go that route."
+  },
+  {
+    "objectID": "embedding/r-and-python.html",
+    "href": "embedding/r-and-python.html",
+    "title": "Using R and Python in Quarto",
+    "section": "",
+    "text": "There are two ways of using Quarto:\nThe first is that it’s just a tool to just convert Jupyter notebooks into websites. The websites are great, it’s a delight, etc etc.\nThe other way of using Quarto is to move beyond Jupyter notebooks into a new format called Quarto Markdown files, or .qmd. Quarto Markdown is a plaintext-only alternative to Jupyter, and built off of R Markdown (which I don’t really know but hey, it’s what R people use!)."
+  },
+  {
+    "objectID": "embedding/r-and-python.html#what-quarto-markdown-looks-like",
+    "href": "embedding/r-and-python.html#what-quarto-markdown-looks-like",
+    "title": "Using R and Python in Quarto",
+    "section": "What Quarto markdown looks like",
+    "text": "What Quarto markdown looks like\nTo use a language like Python or R, you wrap you code in triple backticks and add either {python} or {r} to it.\nThis is some Python code.\n\n```{python}\nimport pandas as pd\n\ndf = pd.read_csv(\"temperatures.csv\")\ndf.head()\n```\n\nHere is some R code.\n\n```{r}\ndata &lt;- read.csv(\"temperatures.csv\")\nprint(data)\n```\nTraditional Markdown just runs the code as styled code blocks, but Quarto Markdown actually runs the code, similar to a Jupyter notebook."
+  },
+  {
+    "objectID": "embedding/r-and-python.html#quarto-markdown-in-action",
+    "href": "embedding/r-and-python.html#quarto-markdown-in-action",
+    "title": "Using R and Python in Quarto",
+    "section": "Quarto markdown in action",
+    "text": "Quarto markdown in action\nThis is a live example of using the pandas libary to read in a CSV file, then display the first few lines of the file. You’ll see both the code as well as the output.\n\nimport pandas as pd\n\ndf = pd.read_csv(\"temperatures.csv\")\ndf.head(3)\n\n\n\n\n\n\n\n\nDate\nAnomaly\n\n\n\n\n0\n1880-01-01\n-0.30\n\n\n1\n1880-02-01\n-0.21\n\n\n2\n1880-03-01\n-0.18\n\n\n\n\n\n\n\nTo make this happen, all I had to do was add this Markdown:\n```{python}\nimport pandas as pd\n\ndf = pd.read_csv(\"temperatures.csv\")\ndf.head(3)\n```\nAmazing!"
+  },
+  {
+    "objectID": "embedding/observable.html",
+    "href": "embedding/observable.html",
+    "title": "Using Observable in Quarto",
+    "section": "",
+    "text": "Let’s look at how to embed Observable for easy interactive data visualization."
+  },
+  {
+    "objectID": "embedding/observable.html#what-is-observable",
+    "href": "embedding/observable.html#what-is-observable",
+    "title": "Using Observable in Quarto",
+    "section": "What is Observable?",
+    "text": "What is Observable?\nObservable is blah blah."
+  },
+  {
+    "objectID": "embedding/observable.html#embedding-observable",
+    "href": "embedding/observable.html#embedding-observable",
+    "title": "Using Observable in Quarto",
+    "section": "Embedding Observable",
+    "text": "Embedding Observable\nObservable is embedded with the ojs tag, so your .qmd file might look something like this:\nWe are reading in a file.\n\n```{ojs}\ntemps = FileAttachment(\"temperatures.csv\").csv({typed: true})\n```\n\nAnd here is our plot.\n\n```{ojs}\nPlot.lineY(temps, {x: \"Date\", y: \"Anomaly\"})\n```\nThis could result in a chart like below:\n\ntemperatures = FileAttachment(\"temperatures.csv\").csv({typed: true})\nPlot.line(temperatures, {x: \"Date\", y: \"Anomaly\"}).plot({y: {grid: true}})"
+  },
+  {
+    "objectID": "embedding/observable.html#creating-interactive-plots",
+    "href": "embedding/observable.html#creating-interactive-plots",
+    "title": "Using Observable in Quarto",
+    "section": "Creating interactive plots",
+    "text": "Creating interactive plots\n\n\n\n\n\n\nNote\n\n\n\nThis is an adaptation of the moving average example from the Observable documentation.\n\n\nWe’ll start by reading in our file. The file itself lives in the same folder as our .qmd file.\n\ntemps = FileAttachment(\"temperatures.csv\").csv({typed: true})\n\n\n\n\n\n\nThe beauty of Observable is that it’s easy to create graphics that the user can interact with by setting options, filtering, and more! In this case we’ll use Inputs.select to set the rolling average window for a time series plot.\n\nviewof rolling = Inputs.select([6, 12, 24, 36, 60, 120], {\n    value: 12,\n    format: o =&gt; `${o} months`,\n    label: \"Rolling window\"\n})\n\n\n\n\n\n\nNow that we’ve read in our data and set up a filter, it’s time to sit back, relax, and enjoy the plot!\n\n\nCode\nPlot.plot({\n  color: {scheme: \"BuRd\"},\n  marks: [\n    Plot.ruleY([0]),\n    Plot.dot(temps, {x: \"Date\", y: \"Anomaly\", stroke: \"Anomaly\"}),\n    Plot.lineY(temps, Plot.windowY(rolling, {x: \"Date\", y: \"Anomaly\"}))\n  ]\n})\n\n\n\n\n\n\n\nWhen you’re working with Observable inside of a Quarto notebook, you have all the same sorts of options you would when working with Python or R. In this case, we used //| code-fold: true with our {ojs} block to allow the user to hdie and show the code. Click ▶ Code to reveal the code we used to embed the graph!"
+  },
+  {
+    "objectID": "embedding/observable.html#learn-more",
+    "href": "embedding/observable.html#learn-more",
+    "title": "Using Observable in Quarto",
+    "section": "Learn more",
+    "text": "Learn more\nQuarto’s documentation on using Observable is excellent, I definitely recommend checking it out. In the example above we specifically used Observable Plot, which you can learn more about on observablehq.com."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Building and publishing with Quarto",
+    "section": "",
+    "text": "I’ve found the best approach to setting up Quarto is download and run the installer from quarto.org."
+  },
+  {
+    "objectID": "index.html#installing-quarto",
+    "href": "index.html#installing-quarto",
+    "title": "Building and publishing with Quarto",
+    "section": "",
+    "text": "I’ve found the best approach to setting up Quarto is download and run the installer from quarto.org."
+  },
+  {
+    "objectID": "index.html#quickstart",
+    "href": "index.html#quickstart",
+    "title": "Building and publishing with Quarto",
+    "section": "Quickstart",
+    "text": "Quickstart\nIf you’d rather just blast off instead of actually learn anything, here you go!\n\nSingle-page site\nCreate a Jupyter notebook called my-notebook.ipynb and run either of the commands below.\n# Preview the site\nquarto preview my-notebook.ipynb\n\n# Render the actual HTML page\nquarto publish my-notebook.ipynb --to html --embed-resources\n\n\nMulti-page website\nCreate a _quarto.yml as outlined here, then run either of the commands below.\n# Preview the site\nquarto preview\n\n# Render out as files\nquarto render"
+  },
+  {
+    "objectID": "index.html#todo",
+    "href": "index.html#todo",
+    "title": "Building and publishing with Quarto",
+    "section": "TODO",
+    "text": "TODO\n\nExample quarto files"
+  },
+  {
+    "objectID": "websites/publishing.html",
+    "href": "websites/publishing.html",
+    "title": "Publishing",
+    "section": "",
+    "text": "While there are all sorts of automatic methods for producing websites using GitHub Pages, I prefer to the old-fashioned “let’s just put it all into the docs folder and publish from there” approach.\nFirst, add the output-dir option into your _quarto.yml.\n\n\n_quarto.yml\n\nproject:\n  type: website\n  output-dir: docs"
+  },
+  {
+    "objectID": "websites/publishing.html#publishing-to-github-pages",
+    "href": "websites/publishing.html#publishing-to-github-pages",
+    "title": "Publishing",
+    "section": "",
+    "text": "While there are all sorts of automatic methods for producing websites using GitHub Pages, I prefer to the old-fashioned “let’s just put it all into the docs folder and publish from there” approach.\nFirst, add the output-dir option into your _quarto.yml.\n\n\n_quarto.yml\n\nproject:\n  type: website\n  output-dir: docs"
+  },
+  {
+    "objectID": "websites/single-page.html",
+    "href": "websites/single-page.html",
+    "title": "A single-page website",
+    "section": "",
+    "text": "The simplest approach involves having an existing Jupyter notebook and running the command below. You do not have to make any changes to the original HTML, and it will create a standalone HTML file with all images, CSS, etc embedded inside.\nquarto render my-notebook.ipynb --to html --embed-resources"
+  },
+  {
+    "objectID": "websites/single-page.html#a-simple-approach",
+    "href": "websites/single-page.html#a-simple-approach",
+    "title": "A single-page website",
+    "section": "",
+    "text": "The simplest approach involves having an existing Jupyter notebook and running the command below. You do not have to make any changes to the original HTML, and it will create a standalone HTML file with all images, CSS, etc embedded inside.\nquarto render my-notebook.ipynb --to html --embed-resources"
+  },
+  {
+    "objectID": "websites/single-page.html#customizing-the-output",
+    "href": "websites/single-page.html#customizing-the-output",
+    "title": "A single-page website",
+    "section": "Customizing the output",
+    "text": "Customizing the output\nA more robust approach requires adding a YAML block at the top of your notebook. This block provide options for your output HTML, and allows many degrees of customization. This approach also helps avoid using complicated render options.\nFirst, add a new cell at the top of your notebook. Make it Raw as opposed to Markdown, Python, or R.\nSecond, add a YAML block surrounded by --- that contains any HTML options you’d like to add. An example is below.\n---\ntitle: \"This title goes at the top of the page\"\nformat:\n  html:\n    toc: true\n    embed-resources: true\n    linkcolor: red\n    theme: cosmo\n---\nWhen added to your notebook, it should look something like the image below.\n\n\n\nAn example of a raw NBConvert block\n\n\nFinally, run the the quarto render command.\nquarto render my-notebook.ipynb --to html"
+  },
+  {
+    "objectID": "websites/styling.html",
+    "href": "websites/styling.html",
+    "title": "Styling",
+    "section": "",
+    "text": "Find the other options on the Quarto themes page.\n---\nformat:\n  html:\n    theme: cosmo   # cosmo bootswatch theme\n---"
+  },
+  {
+    "objectID": "websites/styling.html#html-themes",
+    "href": "websites/styling.html#html-themes",
+    "title": "Styling",
+    "section": "",
+    "text": "Find the other options on the Quarto themes page.\n---\nformat:\n  html:\n    theme: cosmo   # cosmo bootswatch theme\n---"
+  },
+  {
+    "objectID": "websites/styling.html#link-colors",
+    "href": "websites/styling.html#link-colors",
+    "title": "Styling",
+    "section": "Link colors",
+    "text": "Link colors\n---\nformat:\n  html:\n    linkcolor: red\n---"
+  },
+  {
+    "objectID": "websites/styling.html#custom-css",
+    "href": "websites/styling.html#custom-css",
+    "title": "Styling",
+    "section": "Custom CSS",
+    "text": "Custom CSS\n---\nformat:\n  html:\n    css: styles.css\n---"
+  },
+  {
+    "objectID": "websites/styling.html#sidebarcolumn-sizing",
+    "href": "websites/styling.html#sidebarcolumn-sizing",
+    "title": "Styling",
+    "section": "Sidebar/column sizing",
+    "text": "Sidebar/column sizing\nThere are a lot of options for reformatting the page, especially noteable is the grid customization."
+  },
+  {
+    "objectID": "websites/navigation.html",
+    "href": "websites/navigation.html",
+    "title": "Navigation",
+    "section": "",
+    "text": "Most of this is just abbreviated content from the website navigation portion of the Quarto site."
+  },
+  {
+    "objectID": "websites/navigation.html#top-navigation",
+    "href": "websites/navigation.html#top-navigation",
+    "title": "Navigation",
+    "section": "Top navigation",
+    "text": "Top navigation\nAdapt the following to your _quarto.yml to add top navigation to your website. You can any supported file format as a page, including qmd and ipynb.\n\n\n_quarto.yml\n\n---\nwebsite:\n  navbar:\n    background: primary\n    search: true\n    left:\n      - text: \"Home\"\n        file: index.qmd\n      - talks.ipynb\n      - about.qmd \n---\n\nMore top navigation details on the Quarto site."
+  },
+  {
+    "objectID": "websites/navigation.html#left-side-navigation",
+    "href": "websites/navigation.html#left-side-navigation",
+    "title": "Navigation",
+    "section": "Left-side navigation",
+    "text": "Left-side navigation\nAdapt the following to your _quarto.yml to add navigation to the left-hand side of your website. You can any supported file format as a page, including qmd and ipynb.\n\n\n_quarto.yml\n\n---\nwebsite:\n  sidebar:\n    style: \"docked\"\n    search: true\n    contents:\n      - section: \"Basics\"\n        contents:\n          - index.qmd\n          - basics-knitr.qmd\n          - basics-jupyter.qmd\n      - section: \"Layout\"\n        contents:\n          - layout.qmd\n          - layout-knitr.qmd\n          - layout-jupyter.qmd\n---\n\nMore top navigation details on the Quarto site."
+  },
+  {
+    "objectID": "websites/navigation.html#table-of-contents",
+    "href": "websites/navigation.html#table-of-contents",
+    "title": "Navigation",
+    "section": "Table of contents",
+    "text": "Table of contents\nAdd the following to the YAML block at the top of your Quarto Markdown or Jupyter notebook file.\n---\nformat:\n  html:\n    toc: true\n---\nMore table of contents details on the Quarto site."
+  },
+  {
+    "objectID": "websites/multi-page.html",
+    "href": "websites/multi-page.html",
+    "title": "A multi-page website",
+    "section": "",
+    "text": "To build a multi-page website, first create a folder full of content – qmd files, Jupyter notebooks, etc etc. Then add a file called _quarto.yml that looks like the below.\n\n\n_quarto.yml\n\nproject:\n  type: website\n\nwebsite:\n  title: \"My Website\"\n  sidebar:\n    style: \"docked\"\n    contents:\n      - href: index.qmd\n        text: Home\n      - section: \"Websites\"\n        contents:\n          - text: \"Basics\"\n            url: websites/index.qmd\n          - text: \"Navigation\"\n            url: websites/navigation.qmd\n          - text: \"Styling\"\n            url: websites/styling.qmd\n      - section: \"Embedding\"\n        contents:\n          - text: \"R and Python\"\n            url: embedding/r-and-python.qmd\n          - text: \"Interactive graphics with Observable\"\n            url: embedding/observable.qmd\n\nCustomize individual page using single-page options, or add them to your _quarto.yml to make styles apply to all rendered pages.\nTo build the website, simply run the quarto render command in the same folder."
+  },
+  {
+    "objectID": "websites/multi-page.html#multi-page-website",
+    "href": "websites/multi-page.html#multi-page-website",
+    "title": "A multi-page website",
+    "section": "",
+    "text": "To build a multi-page website, first create a folder full of content – qmd files, Jupyter notebooks, etc etc. Then add a file called _quarto.yml that looks like the below.\n\n\n_quarto.yml\n\nproject:\n  type: website\n\nwebsite:\n  title: \"My Website\"\n  sidebar:\n    style: \"docked\"\n    contents:\n      - href: index.qmd\n        text: Home\n      - section: \"Websites\"\n        contents:\n          - text: \"Basics\"\n            url: websites/index.qmd\n          - text: \"Navigation\"\n            url: websites/navigation.qmd\n          - text: \"Styling\"\n            url: websites/styling.qmd\n      - section: \"Embedding\"\n        contents:\n          - text: \"R and Python\"\n            url: embedding/r-and-python.qmd\n          - text: \"Interactive graphics with Observable\"\n            url: embedding/observable.qmd\n\nCustomize individual page using single-page options, or add them to your _quarto.yml to make styles apply to all rendered pages.\nTo build the website, simply run the quarto render command in the same folder."
+  }
+]
