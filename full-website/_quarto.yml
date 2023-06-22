@@ -31,7 +31,7 @@ website:
           - text: "R and Python"
             url: embedding/r-and-python.qmd
           - text: "Combining R and Python"
-            url: embedding/r-and-python.qmd
+            url: embedding/combining-r-with-python.qmd
           - text: "Interactive graphics with Observable"
             url: embedding/observable.qmd
           - text: "Troubleshooting"
