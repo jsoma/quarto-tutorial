@@ -9,9 +9,31 @@ format:
 
 ## Publishing your notebooks with the Quarto framework
 
-Jonathan Soma and Leon Yin
-
 The Joint Computation + Journalism European Data & Computational Journalism Conference 2023
+
+[github.com/jsoma/quarto-tutorial](https://github.com/jsoma/quarto-tutorial)
+
+![](qr-code.png){.absolute right=0 top=200}
+
+:::: {.columns .absolute bottom=0 left=0 right=0}
+
+::: {.column}
+Jonathan Soma
+
+Columbia University
+
+js4571@columbia.edu
+:::
+
+::: {.column}
+Leon Yin
+
+The Markup
+
+leon@leonyin.org
+:::
+
+::::
 
 ## What is Quarto?
 
@@ -21,19 +43,16 @@ The Joint Computation + Journalism European Data & Computational Journalism Conf
 
 ## Publishing framework (pandoc)
 
-:::: {.columns}
-
-::: {.column width="50%"}
 Everything flows to [pandoc](https://pandoc.org/)!
 
-![](images/pandoc.png)
+![The official pandoc website's representation of pandoc](images/pandoc.png)
 
-(This is the official website's representation of pandoc)
-:::
+## What this means for notebooks
 
-::: {.column width="50%"}
+A Jupyter notebook can become anything! (but especially a website)
+
 ```{mermaid}
-flowchart TD
+flowchart LR
   qmd --> markdown
   Jupyter --> markdown
   markdown --> quarto([quarto])
@@ -43,11 +62,6 @@ flowchart TD
   pandoc --> PDF & Word & Presentation & HTML & LaTeX & etc
 ```
 :::
-
-::::
-
-## What this means for notebooks
-
 
 ## Development framework (qmd)
 
@@ -107,13 +121,17 @@ df.head()
 
 ## jonathansoma.com/everything
 
+_Still `mkdocs` + `mkdocs-material` at the moment_
+
 <iframe class="stretch" data-src="https://jonathansoma.com/everything"></iframe>
 
 ## jonathansoma.com/everything
 
-![](images/jonathansoma-2.png){.absolute top=80 left=-150}
+_Still `mkdocs` + `mkdocs-material` at the moment_
 
-![](images/jonathansoma-1.png){.absolute top=100 left=200}
+![](images/jonathansoma-2.png){.absolute top=100 left=-150}
+
+![](images/jonathansoma-1.png){.absolute top=120 left=200}
 
 ## at the Associated Press
 
@@ -123,22 +141,8 @@ I don't have any screenshots, but it's used for internal sharing of data analysi
 
 ![](images/this-presentation.png)
 
-## Hands-on: Host your own Quarto website
+## Hands-on: Host your own Quarto website {.nostretch}
 
-_Let's do this!_
+Visit [github.com/jsoma/quarto-tutorial](https://github.com/jsoma/quarto-tutorial)
 
-:::: {.columns}
-
-::: {.column}
-Install Quarto from [quarto.org](https://quarto.org)
-
-![](images/do-quarto.png)
-:::
-
-::: {.column}
-Install (or open) Visual Studio Code from [code.visualstudio.com](https://code.visualstudio.com)
-
-![](images/do-vsc.png)
-:::
-
-::::
+![](qr-code.png)
