@@ -1,3 +1,9 @@
+## Example Quarto-based sites
+
+- [Inspect Element](https://inspectelement.org/)
+- [Normal AI](https://normalai.org/)
+- [This workshop's website](https://jsoma.github.io/quarto-tutorial/)
+
 ## Setup
 
 1. Download [tutorial-content.zip](tutorial-content.zip) and extract it on your machine.
